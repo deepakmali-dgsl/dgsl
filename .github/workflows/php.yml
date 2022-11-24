@@ -15,11 +15,6 @@ jobs:
         run: composer validate
       - name: Install composer dependencies
         run: composer install --prefer-dist --no-progress -vvv
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "14"
-      - name: Install frontend dependencies
-        run: cd web/themes/imalabya && yarn install
       - name: Check coding standards for modules and theme
         uses: docker://hussainweb/drupalqa:php8.0
         with:
