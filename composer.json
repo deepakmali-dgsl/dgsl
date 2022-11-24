@@ -98,9 +98,9 @@
         "squizlabs/php_codesniffer": "^3.5"
     },
     "scripts": {
-        "lint": "phplint --no-cache web/",
-        "phpcs": "phpcs --standard=PSR12 web/",
-        "phpcbf": "phpcbf --standard=PSR12 web/",
-        "test": "phpunit web/"
+        "lint": "phplint --no-cache web/modules/custom",
+        "phpcs": "phpcs --standard=PSR12 web/modules/custom",
+        "phpcbf": "phpcbf --standard=PSR12 web/modules/custom",
+        "test": "phpunit web/modules/custom"
     }
 }
