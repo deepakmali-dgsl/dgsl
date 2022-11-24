@@ -31,7 +31,13 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+      
+    - name: Run lint
+      run: composer lint
 
+    - name: Run phpcs
+      run: composer phpcs
+      
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
