@@ -56,3 +56,5 @@ bin/
 !web/modules/**
 .git
 web/core
+web/sites/default/settings.local.php
+web/sites/default/settings.php
