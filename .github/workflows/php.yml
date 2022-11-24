@@ -43,3 +43,27 @@ jobs:
 
     - name: Run phpcs
       run: composer phpcs
+
+before_script:
+  - eval $( ssh-agent -s )
+  - echo ${SSH_AGENT_PID} > /tmp/agent-${CI_JOB_ID}
+  - ssh-add <(echo "${dgsl92server}")
+  - ssh-add -l
+
+dev-deploy:
+  stage: deploy
+  variables:
+    SERVER1: dgsl@10.254.6.92 # Dev
+    VHOST: /var/www/html/dgslnew
+  after_script:
+    - rm -f /tmp/agent-${CI_JOB_ID}
+  script:
+    ## Deploy
+    - echo $SERVER1
+    - ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SERVER1} "cd ${VHOST} && sudo git pull origin dev" || true
+    - ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SERVER1} "cd ${VHOST} && composer install" || true
+    - ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SERVER1} "cd ${VHOST} && drush updb -y" || true
+    - ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SERVER1} "cd ${VHOST} && drush cim -y" || true
+    - ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SERVER1} "cd ${VHOST} && sudo drush cr" || true
+  only:
+    - dev
