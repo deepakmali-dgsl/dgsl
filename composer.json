@@ -93,6 +93,13 @@
         }
     },
     "require-dev": {
-        "overtrue/phplint": "*"
+        "overtrue/phplint": "*",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "scripts": {
+        "lint": "phplint --no-cache web/",
+        "phpcs": "phpcs --standard=PSR12 web/",
+        "phpcbf": "phpcbf --standard=PSR12 web/",
+        "test": "phpunit web/"
     }
 }
