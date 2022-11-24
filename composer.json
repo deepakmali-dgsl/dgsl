@@ -97,6 +97,7 @@
         "squizlabs/php_codesniffer": "^3.5"
     },
     "scripts": {
+        "Composer\\Config::disableProcessTimeout",
         "lint": "phplint --no-cache web/",
         "phpcs": "phpcs --standard=PSR12 web/",
         "phpcbf": "phpcbf --standard=PSR12 web/",
