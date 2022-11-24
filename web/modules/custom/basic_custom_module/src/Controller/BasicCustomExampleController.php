@@ -7,20 +7,19 @@ use Drupal\Core\Controller\ControllerBase;
 /**
  * Controller for the Basic Custom module example.
  */
-class BasicCustomExampleController extends ControllerBase {
-
+class BasicCustomExampleController extends ControllerBase
+{
   /**
    * Hello World controller method.
    *
    * @return array
    *   Return just an array with a piece of markup to render in screen.
    */
-  public function helloWorld() {
+    public function helloWorld()
+    {
 
-    return [
-      '#markup' => $this->t('Hello World, I am just a basic custom example.'),
-    ];
-  }
-
+        return [
+        '#markup' => $this->t('Hello World, I am just a basic custom example.'),
+        ];
+    }
 }
-
