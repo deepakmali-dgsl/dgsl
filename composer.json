@@ -99,7 +99,10 @@
     "scripts": {
         "Composer\\Config::disableProcessTimeout",
         "lint": "phplint --no-cache web/",
-        "phpcs": "phpcs --standard=PSR12 web/",
+        "phpcs": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpcs --standard=PSR12 web/"
+        ],
         "phpcbf": "phpcbf --standard=PSR12 web/",
         "test": "phpunit web/"
     }
