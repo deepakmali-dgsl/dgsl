@@ -16,6 +16,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.PRIVATE_KEY }}
+        port: 9043 
         debug: true
         script: |
           cd ${{ secrets.DOCROOT }}
