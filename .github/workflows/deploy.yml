@@ -17,7 +17,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script:
+        debug: true
+        script: |
           cd ${{ secrets.DOCROOT }}
           git pull
-          composer install
+          robo job:drupal-update
