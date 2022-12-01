@@ -17,4 +17,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script:
+          cd ${{ secrets.DOCROOT }}
+          git pull
+          composer install
